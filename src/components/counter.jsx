@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
+        value: this.props.value,
         test: 'zero',
         tags: ['tag1', 'tag2', 'tag3']
     };
@@ -16,11 +16,17 @@ class Counter extends Component {
 ////second way to bind handle methods, use arrow method
     handleIncrement = (product) => {
         console.log(product);
-        this.setState( {count: this.state.count + 1 } ); //method from Component to tell react any chabge
+        this.setState( {value: this.state.value + 1 } ); //method from Component to tell react any change
     }
 
     render() {
+        /*
+        an object which stores the value of attributes of a tag and work similar to the HTML attributes. It gives a
+        way to pass data from one component to other components. It is similar to function arguments.
+        Props are passed to the component in the same way as arguments passed in a function*/
 
+        //this.props is plain javaScript object that includes all the attributes
+        //that we set  in counters component
         return (
         <React.Fragment>
             <span className={this.getBadgeClasses()}>{this.formatCounter()}</span>
@@ -30,13 +36,13 @@ class Counter extends Component {
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes+= this.state.count === 0 ? "warning" : "primary";
+        classes+= this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatCounter() {
-    const { test, count } = this.state
-        return count === 0 ? test : count;
+    const { test, value } = this.state
+        return value === 0 ? test : value;
     }
 }
 export default Counter;
