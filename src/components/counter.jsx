@@ -29,10 +29,11 @@ class Counter extends Component {
     render() {
         console.log(this.props);
         return (
-        <React.Fragment>
+        <div>
             <span className={this.getBadgeClasses()}>{this.formatCounter()}</span>
             <button onClick={() => this.handleIncrement({id: 1})} className="btn btn-secondary btn-sm">Increment</button>
-        </React.Fragment>);
+            <button onClick={this.props.onDelete} className="btn btn-danger btn-sm m-2">Delete</button>
+        </div>);
     }
 
     getBadgeClasses() {
